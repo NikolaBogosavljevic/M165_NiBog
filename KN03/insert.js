@@ -1,95 +1,150 @@
-var product1 = new ObjectId();
-var product2 = new ObjectId();
-var product3 = new ObjectId();
-var product4 = new ObjectId();
-var product5 = new ObjectId();
+var band1 = new ObjectId();
+var band2 = new ObjectId();
+var band3 = new ObjectId();
 
-db.products.insertMany([
+var member1 = new ObjectId();
+var member2 = new ObjectId();
+var member3 = new ObjectId();
+var member4 = new ObjectId();
+var member5 = new ObjectId();
+var member6 = new ObjectId();
+
+var album1 = new ObjectId();
+var album2 = new ObjectId();
+var album3 = new ObjectId();
+var album4 = new ObjectId();
+
+var song1 = new ObjectId();
+var song2 = new ObjectId();
+var song3 = new ObjectId();
+var song4 = new ObjectId();
+var song5 = new ObjectId();
+var song6 = new ObjectId();
+
+
+db.Song.insertMany([
     {
-        _id: product1,
-        name: "Laptop",
-        price: 699.95,
-        description: "A Modern Laptop with Top features"
+        _id: song1,
+        title: "Rock song",
+        duration: 4.5
     },
     {
-        _id: product2,
-        name: "Smart Watch",
-        price: 249.50,
-        description: "Wearable Computer on your wrist"
+        _id: song2,
+        title: "Guitar song",
+        duration: 3.8
     },
     {
-        _id: product3,
-        name: "Wired Headphones",
-        price: 24.95,
-        description: "Cheap with mediocre quality"
+        _id: song3,
+        title: "Drum song",
+        duration: 5.0
     },
     {
-        _id: product4,
-        name: "USB Drive 64GB",
-        price: 12.0,
-        description: "USB Drive for storing your files on the go"
+        _id: song4,
+        title: "Jazz song",
+        duration: 4.2
     },
     {
-        _id: product5,
-        name: "Teapot",
-        price: 418.0,
-        description: "Why do i exist? That is the question"
+        _id: song5,
+        title: "Pop song",
+        duration: 3.5
+    },
+    {
+        _id: song6,
+        title: "Dance song",
+        duration: 4.0
     }
 ]);
 
-var order1 = new ObjectId();
-var order2 = new ObjectId();
-var order3 = new ObjectId();
-var order4 = new ObjectId();
 
-db.orders.insertMany([
+db.Album.insertMany([
     {
-        _id: order1,
-        orderDate: new Date("2023-07-09"),
-        orderCompleted: true,
-        orderedProducts: [product1, product4],
-        Invoice: {
-            _id: new ObjectId(),
-            refNumber: 11230983954,
-            netPrice: 711.95,
-            dueDate: new Date("2023-08-09")
-        }
+        _id: album1,
+        name: "Rock album",
+        genre: "Rock",
+        release_date: new Date("2001-05-20"),
+        songs: [song1, song2]
     },
     {
-        _id: order2,
-        orderDate: new Date("2024-09-05"),
-        orderCompleted: false,
-        orderedProducts: [product2],
-        Invoice: {
-            _id: new ObjectId(),
-            refNumber: 897234657,
-            netPrice: 249.50,
-            dueDate: new Date("2024-10-05")
-        }
+        _id: album2,
+        name: "Rock and Roll album",
+        genre: "Rock",
+        release_date: new Date("2003-07-15"),
+        songs: [song3]
     },
     {
-        _id: order3,
-        orderDate: new Date("2024-09-12"),
-        orderCompleted: false,
-        orderedProducts: [product3, product4],
-        Invoice: {
-            _id: new ObjectId(),
-            refNumber: 65672348797,
-            netPrice: 36.95,
-            dueDate: new Date("2024-10-12")
-        }
+        _id: album3,
+        name: "Jazz album",
+        genre: "Jazz",
+        release_date: new Date("1995-03-15"),
+        songs: [song4]
     },
     {
-        _id: order4,
-        orderDate: new Date("1970-01-01"),
-        orderCompleted: true,
-        orderedProducts: [product5],
-        Invoice: {
-            _id: new ObjectId(),
-            refNumber: 2000,
-            netPrice: 418.0,
-            dueDate: new Date("1970-02-01")
-        }
+        _id: album4,
+        name: "Pop album",
+        genre: "Pop",
+        release_date: new Date("2010-07-30"),
+        songs: [song5, song6]
     }
 ]);
+
+db.Band.insertOne({
+    _id: band1,
+    name: "The Rockers",
+    genre: "Rock",
+    albums: [album1, album2]
+});
+
+db.Band.insertOne({
+    _id: band2,
+    name: "Jazz guys",
+    genre: "Jazz",
+    albums: [album3]
+});
+
+db.Band.insertOne({
+    _id: band3,
+    name: "Pop fellas",
+    genre: "Pop",
+    albums: [album4]
+});
+
+db.Member.insertMany([
+    {
+        _id: member1,
+        name: "Johnah^tan",
+        instrument: "Guitar",
+        bands: [band1]
+    },
+    {
+        _id: member2,
+        name: "James doell",
+        instrument: "Vocals",
+        bands: [band1]
+    },
+    {
+        _id: member3,
+        name: "Mike jord",
+        instrument: "Drums",
+        bands: [band1, band2]
+    },
+    {
+        _id: member4,
+        name: "michael",
+        instrument: "Saxophone",
+        bands: [band2]
+    },
+    {
+        _id: member5,
+        name: "Tom cruisi",
+        instrument: "Piano",
+        bands: [band2]
+    },
+    {
+        _id: member6,
+        name: "Emily black",
+        instrument: "Keyboard",
+        bands: [band3]
+    }
+]);
+
 
