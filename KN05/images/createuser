@@ -1,0 +1,20 @@
+use band
+
+db.createUser({
+    user: 'bog',
+    pwd: '12345',
+    roles: [
+        {role: "read", db: "band"}
+    ]
+})
+
+
+use admin
+
+db.createUser({
+    user: 'bog2',
+    pwd: '1234',
+    roles: [
+        {role: 'readWrite', db: 'band'}
+    ]
+})
